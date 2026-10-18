@@ -2,43 +2,266 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#11110f">
-<meta name="description" content="A premium mobile-first ToDo List with priorities, branches, pinned tasks, history and JSON backup.">
-<title>ToDo List — Focus, beautifully</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090d18">
+<title>ToDo List v1.3.0</title>
 <style>
-:root{color-scheme:dark;--bg:#0c0d0d;--panel:#171817;--line:#34352f;--text:#f4f0e7;--muted:#a5a398;--gold:#d8c39a;--green:#b9c9ad;--red:#d9968d}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 85% 0,#39332655,transparent 35%),linear-gradient(150deg,#0b0c0c,#121311 55%,#0a0b0a);color:var(--text);font:15px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;padding:20px 14px 100px}.app{max-width:760px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;display:grid;place-items:center;border:1px solid #8d79524d;border-radius:15px;color:var(--gold);font-size:24px;background:linear-gradient(145deg,#343026,#171817)}h1{font:600 17px Georgia,serif;letter-spacing:.15em;margin:0}.sub{font-size:11px;color:var(--muted);margin-top:2px}.version{border:1px solid var(--line);border-radius:99px;padding:7px 10px;color:var(--gold);font-size:11px}.hero{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}.eyebrow{color:var(--gold);font-size:10px;letter-spacing:.2em;font-weight:800}.hero h2{font:500 clamp(29px,7vw,42px)/1.08 Georgia,serif;margin:8px 0}.hero p{color:var(--muted);font-size:13px;margin:0}.ring{width:78px;height:78px;flex:none;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--gold) var(--pct,0%),#30312d 0);position:relative}.ring:before{content:"";position:absolute;inset:6px;background:#111210;border-radius:50%}.ring strong{position:relative;font-size:17px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px}.stat,.panel{border:1px solid #ffffff12;border-radius:18px;background:linear-gradient(145deg,#242521c9,#141513dc);box-shadow:0 15px 35px #0003}.stat{padding:13px}.stat small{display:block;color:var(--muted);font-size:10px;letter-spacing:.08em}.stat strong{font-size:24px}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.field,select{min-width:0;background:#141512;border:1px solid var(--line);color:var(--text);border-radius:12px;padding:11px 12px;outline:none}.field:focus,select:focus{border-color:#d8c39a88}.search{flex:1}.toolbar select{max-width:46%}.section{display:flex;justify-content:space-between;align-items:center;margin:19px 2px 10px}.section h3{font-size:15px;margin:0}.muted{color:var(--muted);font-size:11px}.tasks{display:grid;gap:10px}.task{padding:15px;position:relative;overflow:hidden}.task:before{content:"";position:absolute;inset:0 auto 0 0;width:3px;background:var(--gold)}.tasktop{display:flex;gap:10px;align-items:flex-start}.check{flex:none;width:27px;height:27px;border-radius:9px;border:1px solid #5a5c50;background:#22241e;color:var(--green);font-weight:800}.taskbody{flex:1;min-width:0}.tasktitle{font-weight:750;overflow-wrap:anywhere}.done .tasktitle{text-decoration:line-through;color:#929287}.desc{font-size:12px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.pill{font-size:10px;border-radius:99px;padding:4px 8px;background:#34332b;color:#d5c8ac}.pill.high{background:#422925;color:#efb1a6}.pill.low{background:#27372a;color:#c3d5b6}.actions{display:flex;gap:7px;margin-top:11px}.btn{border:1px solid var(--line);border-radius:11px;background:#242520;color:var(--text);padding:9px 12px}.primary{background:linear-gradient(135deg,#d8c39a,#a9946e);border:0;color:#171610;font-weight:800}.actions .btn{font-size:11px;padding:6px 9px}.empty{text-align:center;padding:28px 15px}.empty strong{font:500 20px Georgia,serif}.empty p{font-size:12px;color:var(--muted)}.bottom{position:fixed;bottom:0;left:0;right:0;padding:12px max(14px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom));background:#0b0c0beF;border-top:1px solid var(--line);backdrop-filter:blur(16px)}.bottominner{max-width:760px;margin:auto;display:flex;gap:9px}.bottominner .field{flex:1;min-width:0}.bottominner .btn{white-space:nowrap}.foot{text-align:center;color:#77766c;font-size:10px;padding:22px 0}.hide{display:none!important}@media(min-width:600px){body{padding:28px 22px 110px}.stat{padding:16px}.task{padding:18px}}
+:root{color-scheme:dark;--bg:#080c17;--panel:rgba(20,29,49,.82);--panel2:rgba(25,37,61,.82);--line:rgba(155,180,230,.16);--text:#f3f6ff;--muted:#9aa7c5;--cyan:#61e5f2;--violet:#b69cff;--green:#65e7ad;--orange:#ffc27b;--red:#ff8199}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100dvh;color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:radial-gradient(ellipse at 90% 0%,#1c2550 0,transparent 35%),radial-gradient(ellipse at 0% 55%,#14233c 0,transparent 35%),var(--bg);padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+button,input,textarea,select{font:inherit}button{cursor:pointer;touch-action:manipulation;color:inherit}.app{max-width:760px;margin:auto;padding:18px 15px 20px}.top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:23px}.brand{display:flex;align-items:center;gap:11px;min-width:0}.logo{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-size:23px;color:var(--cyan);background:linear-gradient(135deg,#263d62,#17223d);border:1px solid #3d6580;box-shadow:0 0 24px #4ad8f21a;animation:float 3.2s ease-in-out infinite}.brand h1{font-size:17px;letter-spacing:.08em;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:11px}.version{white-space:nowrap;color:var(--green);font-size:11px;border:1px solid var(--line);background:#152338b8;border-radius:99px;padding:8px 10px}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{box-shadow:0 0 0 0 #61e5f22c}50%{box-shadow:0 0 0 7px #61e5f200}}
+.hero{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:18px}.eyebrow{font-size:10px;letter-spacing:.15em;color:var(--cyan);font-weight:800}.hero h2{font-size:clamp(25px,7vw,34px);line-height:1.1;margin:7px 0}.hero p{margin:0;color:var(--muted);font-size:13px}.progress-ring{flex:0 0 82px;width:82px;height:82px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--cyan) var(--progress,0%),#29344e 0);position:relative;box-shadow:0 0 30px #61e5f215}.progress-ring:before{content:"";position:absolute;inset:7px;background:#10182a;border-radius:50%;border:1px solid var(--line)}.progress-ring span{position:relative;text-align:center;font-weight:800;font-size:17px}.progress-ring small{display:block;font-size:9px;color:var(--muted);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-bottom:17px}.stat,.glass{background:linear-gradient(145deg,rgba(27,39,64,.88),rgba(13,20,36,.83));border:1px solid var(--line);box-shadow:0 12px 30px #00000015,inset 0 1px #ffffff08;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:19px}.stat{padding:13px 12px}.stat label{display:block;color:var(--muted);font-size:9px;letter-spacing:.08em;font-weight:800}.stat strong{display:block;font-size:24px;margin-top:3px}.cyan{color:var(--cyan)}.green{color:var(--green)}.violet{color:var(--violet)}.orange{color:var(--orange)}
+.branchrow{display:flex;align-items:center;gap:8px;margin:0 0 17px}.branchrow label{color:var(--muted);font-size:12px}.select{background:#121d31;border:1px solid var(--line);border-radius:12px;color:var(--cyan);padding:9px 10px;min-width:0;max-width:65%;outline:none}.search{flex:1;min-width:0;background:#121b2d;border:1px solid var(--line);border-radius:12px;padding:10px 12px;color:var(--text);outline:none}.search:focus,.field:focus{border-color:#61e5f27a;box-shadow:0 0 0 3px #61e5f20c}
+.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:15px 1px 10px}.sectionhead h3{font-size:16px;margin:0}.sectionhead span{font-size:11px;color:var(--muted)}.tasks{display:grid;gap:10px}.task{position:relative;overflow:hidden;padding:15px;animation:rise .28s ease both}.task:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent,var(--cyan))}.tasktop{display:flex;align-items:flex-start;gap:10px}.check{flex:0 0 28px;width:28px;height:28px;border-radius:10px;border:1px solid #45617e;background:#14233a;color:var(--green);display:grid;place-items:center;padding:0;font-weight:900}.tasktitle{font-weight:750;font-size:14px;overflow-wrap:anywhere;flex:1}.taskdesc{color:var(--muted);font-size:12px;margin:5px 0 11px 38px;overflow-wrap:anywhere}.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px 38px}.pill{border-radius:99px;padding:4px 8px;background:#24314a;color:#b8c6e5;font-size:10px}.pill.pin{background:#2d244a;color:var(--violet)}.pill.high{color:var(--red);background:#3b2234}.pill.medium{color:var(--orange);background:#3a3025}.pill.low{color:var(--green);background:#1e3935}.meta{display:flex;flex-wrap:wrap;gap:8px 13px;margin-left:38px;color:var(--muted);font-size:11px}.actions{display:flex;gap:6px;margin:12px 0 0 38px}.mini{border:1px solid var(--line);background:#1a2740;border-radius:10px;padding:7px 10px;font-size:11px}.mini:hover,.primary:hover,.nav button:hover{filter:brightness(1.15)}.empty{padding:28px 16px;text-align:center}.empty .spark{font-size:28px;color:var(--violet)}.empty h4{margin:7px 0}.empty p{color:var(--muted);font-size:12px;margin:0}.primary{border:0;background:linear-gradient(135deg,#5be0ee,#8b9bff);color:#07111f;font-weight:850;border-radius:14px;padding:12px 15px;box-shadow:0 8px 25px #61e5f21c}.secondary{background:#1a2740;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px 12px}.addbar{display:flex;gap:8px;margin-top:13px}.addbar .primary{flex:1}.voice{min-width:52px;background:#262044;color:var(--violet);border:1px solid #6b58a05c;border-radius:14px;font-size:18px;animation:pulse 2.2s infinite}.voice.listening{background:#54263d;color:#fff;border-color:var(--red)}
+.nav{position:fixed;z-index:10;left:0;right:0;bottom:0;padding:9px 10px calc(9px + env(safe-area-inset-bottom));background:#0c1221df;border-top:1px solid var(--line);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}.navinner{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(5,1fr);gap:4px}.nav button{background:transparent;border:0;border-radius:13px;padding:7px 2px;color:var(--muted);font-size:10px;display:grid;justify-items:center;gap:3px}.nav button b{font-size:19px;line-height:1.1;font-weight:500}.nav button.active{color:var(--cyan);background:#1b2b45}
+.modalback{position:fixed;inset:0;z-index:30;background:#030610b9;display:none;align-items:flex-end;justify-content:center;padding:12px}.modalback.open{display:flex}.modal{width:100%;max-width:540px;max-height:90vh;overflow:auto;background:#111a2c;border:1px solid #3a4b6d;border-radius:24px;padding:19px;box-shadow:0 25px 90px #0009;animation:rise .2s ease}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.modalhead h3{margin:0;font-size:18px}.xbtn{border:0;background:#26344e;border-radius:10px;padding:7px 11px}.fieldlabel{display:block;font-size:12px;color:var(--muted);margin:11px 0 6px}.field{width:100%;background:#0b1323;border:1px solid var(--line);border-radius:12px;padding:11px;color:var(--text);outline:none}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}.modalbuttons{display:flex;gap:8px;margin-top:18px}.modalbuttons>*{flex:1}.notice{color:var(--muted);font-size:11px;margin-top:12px}.toast{position:fixed;z-index:50;left:50%;bottom:calc(94px + env(safe-area-inset-bottom));transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#1e3350;border:1px solid #4d7895;color:#eafcff;padding:11px 16px;border-radius:14px;box-shadow:0 12px 30px #0006;transition:.25s;max-width:90vw;text-align:center;font-size:12px}.toast.show{opacity:1;transform:translate(-50%,0)}.historyrow{padding:13px 14px;margin-bottom:8px}.historyrow strong{display:block;font-size:13px}.historyrow small{color:var(--muted);font-size:11px}.footer{text-align:center;color:#65728e;font-size:10px;padding:20px 0 4px}
+@media(min-width:620px){.app{padding:25px 22px}.task{padding:18px}.modalback{align-items:center}.stats{gap:12px}.stat{padding:15px 17px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Premium classic glass finish — restrained graphite, pearl and champagne */
+:root{--bg:#08090b;--panel:rgba(24,25,28,.76);--panel2:rgba(32,32,35,.78);--line:rgba(232,220,195,.15);--text:#f4f0e8;--muted:#a6a198;--cyan:#d6c29a;--violet:#c6b8a1;--green:#b7c6ad;--orange:#d7b98b;--red:#d89b94;color-scheme:dark}
+html{background:#08090b}body{background:radial-gradient(ellipse at 92% -5%,rgba(168,139,91,.13),transparent 35%),radial-gradient(ellipse at 0% 65%,rgba(115,111,104,.09),transparent 36%),linear-gradient(145deg,#08090b,#101113 55%,#090a0c);letter-spacing:.005em}
+.logo{color:#e3d1aa;background:linear-gradient(145deg,#2d2b26,#171717);border:1px solid rgba(226,204,159,.35);box-shadow:0 8px 28px #0008,inset 0 1px #fff2;border-radius:14px}
+.brand h1{font-family:Georgia,'Times New Roman',serif;font-weight:600;letter-spacing:.14em;font-size:16px}.brand p{letter-spacing:.025em}
+.version{color:#d8c8a6;background:rgba(28,28,28,.72);border-color:rgba(226,204,159,.2)}
+.eyebrow{color:#d8c39a;letter-spacing:.19em}.hero h2{font-family:Georgia,'Times New Roman',serif;font-weight:500;letter-spacing:-.025em}.progress-ring{background:conic-gradient(var(--cyan) var(--progress,0%),#282724 0);box-shadow:0 0 26px #d6c29a0d}.progress-ring:before{background:#111214;border-color:#ffffff0d}
+.stat,.glass{background:linear-gradient(145deg,rgba(39,39,39,.72),rgba(17,18,19,.70));border:1px solid rgba(238,224,197,.13);box-shadow:0 18px 44px #0005,inset 0 1px rgba(255,255,255,.045);backdrop-filter:blur(22px) saturate(115%);-webkit-backdrop-filter:blur(22px) saturate(115%);border-radius:18px}
+.stat label{letter-spacing:.12em}.stat strong{font-family:Georgia,'Times New Roman',serif;font-weight:500}
+.select,.search{background:rgba(22,23,24,.82);border-color:rgba(238,224,197,.16);border-radius:11px}.search:focus,.field:focus{border-color:#d6c29a88;box-shadow:0 0 0 3px #d6c29a0d}
+.task{background:linear-gradient(145deg,rgba(35,35,35,.82),rgba(17,18,19,.76))}.task:before{width:2px;background:var(--accent,#cdb98e)}.tasktitle{font-weight:650;letter-spacing:.005em}.check{border-color:#625a49;background:#24231f;color:#c8d6bc;border-radius:9px}.pill{background:#292824;color:#d2cbbd;border:1px solid #ffffff0a}.pill.pin{background:#302b22;color:#e1c99b}.pill.high{color:#e0aaa3;background:#332322}.pill.medium{color:#dfc49b;background:#30291f}.pill.low{color:#c0cfb5;background:#242a22}
+.primary{background:linear-gradient(135deg,#e2d0a9,#b6a17b);color:#181510;border:1px solid #f0e2c2;box-shadow:0 8px 24px #0004;font-weight:750}.secondary,.mini{background:rgba(42,42,42,.75);border:1px solid rgba(238,224,197,.16);color:#e5dfd2}.voice{background:#29251f;color:#ddcba6;border-color:#8c78504d}.voice.listening{background:#422a28;color:#fff;border-color:#d89b94}
+.nav{background:rgba(13,14,15,.88);border-top-color:rgba(238,224,197,.13);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px)}.nav button.active{color:#e0cda3;background:rgba(214,194,154,.09)}
+.modalback{background:#000b;backdrop-filter:blur(8px)}.modal{background:rgba(23,24,25,.96);border-color:rgba(238,224,197,.2);box-shadow:0 30px 100px #000b}.xbtn{background:#302f2b}.field{background:#111213;border-color:rgba(238,224,197,.15)}.toast{background:#26251f;border-color:#6f634a;color:#f5eddd}
+.empty{padding:34px 18px}.empty .spark{color:#d5c19a}.empty h4{font-family:Georgia,'Times New Roman',serif;font-weight:500;font-size:19px}.footer{color:#77736b}
+@media(hover:hover){.glass:hover,.stat:hover{border-color:rgba(226,204,159,.24);transform:translateY(-1px);transition:transform .22s ease,border-color .22s ease}}
+
+
+
+/* v1.3.0 theme-aware premium details */
+:root[data-theme="midnight"] .logo{color:#61e5f2;background:linear-gradient(145deg,#263d62,#17223d);border-color:#3d6580}
+:root[data-theme="emerald"] .logo{color:#65e5b0;background:linear-gradient(145deg,#1d493b,#10271f);border-color:#4a8a70}
+:root[data-theme="violet"] .logo{color:#c4a0ff;background:linear-gradient(145deg,#38244f,#1b1328);border-color:#765a98}
+:root[data-theme="rose"] .logo{color:#ff9ebd;background:linear-gradient(145deg,#512338,#28131d);border-color:#98506a}
+:root[data-theme="midnight"] .nav button.active{color:#61e5f2;background:#1b2b45}
+:root[data-theme="emerald"] .nav button.active{color:#8af0ad;background:rgba(101,229,176,.10)}
+:root[data-theme="violet"] .nav button.active{color:#e0b5ff;background:rgba(194,157,255,.11)}
+:root[data-theme="rose"] .nav button.active{color:#ffb4c9;background:rgba(255,157,184,.11)}
+:root[data-theme="midnight"] .voice{background:#262044;color:#b69cff}
+:root[data-theme="emerald"] .voice{background:#18392e;color:#8af0ad}
+:root[data-theme="violet"] .voice{background:#302044;color:#e0b5ff}
+:root[data-theme="rose"] .voice{background:#44202d;color:#ffb4c9}
+:root[data-theme="midnight"] .toast{background:#1e3350;border-color:#4d7895}
+:root[data-theme="emerald"] .toast{background:#18392e;border-color:#4a8a70}
+:root[data-theme="violet"] .toast{background:#302044;border-color:#765a98}
+:root[data-theme="rose"] .toast{background:#44202d;border-color:#98506a}
+:root[data-theme="midnight"] .modal{background:#111a2c;border-color:#3a4b6d}
+:root[data-theme="emerald"] .modal{background:#10251e;border-color:#376a55}
+:root[data-theme="violet"] .modal{background:#1b1328;border-color:#60447d}
+:root[data-theme="rose"] .modal{background:#28131d;border-color:#82435a}
+
+/* Five selectable premium dark palettes */
+:root[data-theme="midnight"]{--bg:#080c17;--line:rgba(155,180,230,.16);--text:#f3f6ff;--muted:#9aa7c5;--cyan:#61e5f2;--violet:#b69cff;--green:#65e7ad;--orange:#ffc27b;--red:#ff8199}
+:root[data-theme="emerald"]{--bg:#07120f;--line:rgba(125,220,177,.18);--text:#edf8f2;--muted:#9ab6aa;--cyan:#65e5b0;--violet:#a8d7bd;--green:#8af0ad;--orange:#e9d18b;--red:#ff9292}
+:root[data-theme="violet"]{--bg:#100a19;--line:rgba(194,157,255,.2);--text:#f6f0ff;--muted:#b5a4cb;--cyan:#c4a0ff;--violet:#e0b5ff;--green:#91e6bd;--orange:#ffc58d;--red:#ff92bd}
+:root[data-theme="rose"]{--bg:#170b10;--line:rgba(255,157,184,.19);--text:#fff1f4;--muted:#c6a2ad;--cyan:#ff9ebd;--violet:#d7a7ff;--green:#a4e7bc;--orange:#ffd19b;--red:#ff7e91}
+:root[data-theme="gold"]{--bg:#08090b;--line:rgba(232,220,195,.15);--text:#f4f0e8;--muted:#a6a198;--cyan:#d6c29a;--violet:#c6b8a1;--green:#b7c6ad;--orange:#d7b98b;--red:#d89b94}
+:root[data-theme="midnight"] body{background:radial-gradient(ellipse at 90% 0%,#1c2550 0,transparent 35%),radial-gradient(ellipse at 0% 55%,#14233c 0,transparent 35%),var(--bg)}
+:root[data-theme="emerald"] body{background:radial-gradient(ellipse at 90% 0%,#164b3b 0,transparent 36%),radial-gradient(ellipse at 0% 55%,#12332c 0,transparent 35%),var(--bg)}
+:root[data-theme="violet"] body{background:radial-gradient(ellipse at 90% 0%,#40205c 0,transparent 36%),radial-gradient(ellipse at 0% 55%,#24143d 0,transparent 35%),var(--bg)}
+:root[data-theme="rose"] body{background:radial-gradient(ellipse at 90% 0%,#552136 0,transparent 36%),radial-gradient(ellipse at 0% 55%,#351624 0,transparent 35%),var(--bg)}
+:root[data-theme="gold"] body{background:radial-gradient(ellipse at 92% -5%,rgba(168,139,91,.13),transparent 35%),radial-gradient(ellipse at 0% 65%,rgba(115,111,104,.09),transparent 36%),linear-gradient(145deg,#08090b,#101113 55%,#090a0c)}
+:root[data-theme="midnight"] .stat,:root[data-theme="midnight"] .glass{background:linear-gradient(145deg,rgba(27,39,64,.88),rgba(13,20,36,.83))}
+:root[data-theme="emerald"] .stat,:root[data-theme="emerald"] .glass{background:linear-gradient(145deg,rgba(20,53,43,.82),rgba(10,24,21,.83))}
+:root[data-theme="violet"] .stat,:root[data-theme="violet"] .glass{background:linear-gradient(145deg,rgba(48,31,68,.82),rgba(20,13,31,.83))}
+:root[data-theme="rose"] .stat,:root[data-theme="rose"] .glass{background:linear-gradient(145deg,rgba(59,28,41,.82),rgba(25,13,19,.83))}
+:root[data-theme="gold"] .stat,:root[data-theme="gold"] .glass{background:linear-gradient(145deg,rgba(39,39,39,.72),rgba(17,18,19,.70))}
+:root[data-theme="midnight"] .primary{background:linear-gradient(135deg,#5be0ee,#8b9bff);color:#07111f}
+:root[data-theme="emerald"] .primary{background:linear-gradient(135deg,#7de6bb,#b3e5b8);color:#071610}
+:root[data-theme="violet"] .primary{background:linear-gradient(135deg,#c7a0ff,#f0b9ed);color:#190e24}
+:root[data-theme="rose"] .primary{background:linear-gradient(135deg,#ff9fbd,#ffd0d9);color:#2a0d18}
+:root[data-theme="gold"] .primary{background:linear-gradient(135deg,#e2d0a9,#b6a17b);color:#181510}
+.branchrow #addBranchBtn{white-space:nowrap;padding:9px 10px}
+@media(max-width:430px){.branchrow{flex-wrap:wrap}.branchrow label{flex:0 0 auto}.branchrow .select{flex:1;max-width:none}.branchrow #search{flex:1 0 100%;order:4}}
+
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand"><div class="logo">✦</div><div><h1>TO DO LIST</h1><div class="sub">A calmer way to get things done</div></div></div><span class="version">v1.2.0</span></header>
-<section class="hero"><div><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><h2>Make room for<br>what matters.</h2><p>One small step at a time. Keep your focus intentional.</p></div><div class="ring" id="ring"><strong id="percent">0%</strong></div></section>
-<section class="stats"><div class="stat"><small>TO DO</small><strong id="todoCount">0</strong></div><div class="stat"><small>COMPLETED</small><strong id="doneCount">0</strong></div><div class="stat"><small>PINNED</small><strong id="pinCount">0</strong></div></section>
-<div class="toolbar"><select id="branch" aria-label="Task branch"><option value="main">Main branch</option><option value="learning">Learning</option><option value="projects">Projects</option></select><input class="field search" id="search" placeholder="Search your tasks…" aria-label="Search tasks"><select id="filter" aria-label="Filter tasks"><option value="all">All tasks</option><option value="pending">To do</option><option value="done">Completed</option><option value="pinned">Pinned</option></select></div>
-<div class="section"><h3 id="listTitle">Your tasks</h3><span class="muted" id="listCount">0 items</span></div>
-<div class="tasks" id="tasks"></div>
-<section class="panel" style="padding:15px;margin-top:18px"><div style="font-weight:700">Your data, always yours</div><div class="muted" style="margin:5px 0 12px">Export a backup to keep your tasks safe, or restore one on this device.</div><div class="toolbar" style="margin:0"><button class="btn" id="export">↓ Export JSON</button><button class="btn" id="import">↑ Import JSON</button><button class="btn" id="clearDone">Clear completed</button><input id="file" type="file" accept=".json,application/json" class="hide"></div></section>
-<div class="foot">Stored on this device · No account required</div>
+  <header class="top">
+    <div class="brand"><div class="logo">✦</div><div><h1>TODO LIST</h1><p>Focus gently. Get things done.</p></div></div>
+    <div class="version" id="version">● v1.3.0</div>
+  </header>
+  <section class="hero">
+    <div><div class="eyebrow" id="eyebrow">YOUR PERSONAL FOCUS SPACE</div><h2 id="greeting">Good evening ✨</h2><p id="todayDate">Let's make today count.</p></div>
+    <div class="progress-ring" id="progressRing"><span id="progressText">0/0<small>DONE</small></span></div>
+  </section>
+  <section class="stats">
+    <div class="stat"><label>ACTIVE TASKS</label><strong class="cyan" id="activeCount">0</strong></div>
+    <div class="stat"><label>COMPLETED</label><strong class="green" id="doneCount">0</strong></div>
+    <div class="stat"><label>PINNED</label><strong class="violet" id="pinnedCount">0</strong></div>
+  </section>
+  <div class="branchrow"><label for="branchSelect">⌘ Branch</label><select id="branchSelect" class="select" aria-label="Current branch"></select><button id="addBranchBtn" class="mini" type="button" aria-label="Add branch" title="Add branch">＋ Branch</button><input id="search" class="search" placeholder="⌕ Search tasks" aria-label="Search tasks"></div>
+  <div class="sectionhead"><h3 id="sectionTitle">Today's focus</h3><span id="sectionHint">Showing your top 3</span></div>
+  <main id="taskList" class="tasks" aria-live="polite"></main>
+  <div class="addbar"><button class="primary" id="addBtn">＋ Add a task</button><button class="voice" id="voiceBtn" title="Add task by voice" aria-label="Add task by voice">🎙</button></div>
+  <div class="footer">Your tasks stay on this device · Export a backup anytime</div>
 </div>
-<div class="bottom"><form class="bottominner" id="addForm"><input class="field" id="newTitle" maxlength="180" placeholder="Add a task to your list…" required aria-label="New task title"><select id="priority" aria-label="Priority"><option value="medium">Normal</option><option value="high">High</option><option value="low">Low</option></select><button class="btn primary" type="submit">＋ Add</button></form></div>
+<nav class="nav" aria-label="Main navigation"><div class="navinner">
+  <button class="active" data-view="Today"><b>◷</b>Today</button>
+  <button data-view="All tasks"><b>▤</b>All tasks</button>
+  <button data-view="Pinned"><b>☆</b>Pinned</button>
+  <button data-view="Completed"><b>✓</b>Done</button>
+  <button data-view="More"><b>☷</b>More</button>
+</div></nav>
+<div class="modalback" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><section class="modal">
+  <div class="modalhead"><h3 id="modalTitle">Add a task</h3><button class="xbtn" id="closeModal" aria-label="Close">✕</button></div>
+  <form id="taskForm">
+    <input type="hidden" id="workId">
+    <label class="fieldlabel" for="titleInput">Task name *</label><input class="field" id="titleInput" maxlength="160" required placeholder="e.g. Learn Python functions">
+    <label class="fieldlabel" for="descInput">Description</label><textarea class="field" id="descInput" rows="2" placeholder="What does done look like?"></textarea>
+    <div class="formgrid">
+      <div><label class="fieldlabel" for="dateInput">Due date</label><input class="field" type="date" id="dateInput"></div>
+      <div><label class="fieldlabel" for="timeInput">Due time</label><input class="field" type="time" id="timeInput"></div>
+      <div><label class="fieldlabel" for="durationInput">Estimated minutes</label><input class="field" type="number" id="durationInput" min="1" max="10080" value="30"></div>
+      <div><label class="fieldlabel" for="priorityInput">Priority</label><select class="field" id="priorityInput"><option value="low">Low</option><option value="medium" selected>Medium</option><option value="high">High</option></select></div>
+    </div>
+    <label class="fieldlabel" for="tagsInput">Tags (comma-separated)</label><input class="field" id="tagsInput" placeholder="python, learning">
+    <div class="modalbuttons"><button type="button" class="secondary" id="cancelBtn">Cancel</button><button type="submit" class="primary">Save task ✦</button></div>
+  </form>
+  <p class="notice">Tip: tap the microphone and say “Add task, practise Python for 30 minutes”. Voice input depends on browser support and microphone permission.</p>
+</section></div>
+<div class="toast" id="toast"></div>
 <script>
-(function(){
-"use strict";
-var KEY="todo_list_web_v1",tasks=[],history=[],activeBranch="main";
-var $=function(id){return document.getElementById(id)};
-function load(){try{var d=JSON.parse(localStorage.getItem(KEY)||"{}");tasks=Array.isArray(d.tasks)?d.tasks:[];history=Array.isArray(d.history)?d.history:[]}catch(e){tasks=[];history=[]}}
-function save(){localStorage.setItem(KEY,JSON.stringify({version:"1.2.0",tasks:tasks,history:history}))}
-function log(action,t){history.push({action:action,title:t.title,at:new Date().toISOString(),branch:t.branch});if(history.length>500)history=history.slice(-500)}
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
-function render(){var q=$("search").value.trim().toLowerCase(),filter=$("filter").value;var all=tasks.filter(function(t){return t.branch===activeBranch});var shown=all.filter(function(t){var matches=(t.title+" "+(t.description||"")).toLowerCase().indexOf(q)>=0;return matches&&(filter==="all"||(filter==="pending"&&!t.done)||(filter==="done"&&t.done)||(filter==="pinned"&&t.pinned))});shown.sort(function(a,b){return Number(b.pinned)-Number(a.pinned)||Number(a.done)-Number(b.done)||({"high":0,"medium":1,"low":2}[a.priority]-{"high":0,"medium":1,"low":2}[b.priority])||b.created-a.created});$("tasks").innerHTML="";if(!shown.length){var empty=document.createElement("div");empty.className="panel empty";empty.innerHTML="<strong>"+(q?"No matching tasks":"A fresh page, a clear mind.")+"</strong><p>"+(q?"Try another search.":"Add your first task below and build momentum.")+"</p>";$("tasks").appendChild(empty)}shown.forEach(function(t){var el=document.createElement("article");el.className="panel task"+(t.done?" done":"");var desc=t.description?'<div class="desc">'+esc(t.description)+'</div>':"";el.innerHTML='<div class="tasktop"><button class="check" aria-label="Toggle completion">'+(t.done?"✓":"")+'</button><div class="taskbody"><div class="tasktitle">'+esc(t.title)+'</div>'+desc+'<div class="tags"><span class="pill '+esc(t.priority)+'">'+esc(t.priority.toUpperCase())+'</span>'+(t.pinned?'<span class="pill">★ PINNED</span>':"")+'<span class="pill">'+(t.done?"COMPLETED":"ACTIVE")+'</span></div><div class="actions"><button class="btn pin">'+(t.pinned?"Unpin":"☆ Pin")+'</button><button class="btn edit">Edit</button><button class="btn delete">Delete</button></div></div></div>';el.querySelector(".check").onclick=function(){t.done=!t.done;t.completedAt=t.done?new Date().toISOString():null;log(t.done?"completed":"reopened",t);save();render()};el.querySelector(".pin").onclick=function(){t.pinned=!t.pinned;log(t.pinned?"pinned":"unpinned",t);save();render()};el.querySelector(".edit").onclick=function(){var title=prompt("Edit task title:",t.title);if(title===null)return;title=title.trim();if(!title)return;t.title=title;log("edited",t);save();render()};el.querySelector(".delete").onclick=function(){if(!confirm("Delete this task?"))return;tasks=tasks.filter(function(x){return x.id!==t.id});log("deleted",t);save();render()};$("tasks").appendChild(el)});var completed=all.filter(function(t){return t.done}).length,pinned=all.filter(function(t){return t.pinned&&!t.done}).length,pct=all.length?Math.round(completed/all.length*100):0;$("todoCount").textContent=all.length-completed;$("doneCount").textContent=completed;$("pinCount").textContent=pinned;$("percent").textContent=pct+"%";$("ring").style.setProperty("--pct",pct+"%");$("listCount").textContent=shown.length+" item"+(shown.length===1?"":"s");$("listTitle").textContent=({"main":"Main tasks","learning":"Learning tasks","projects":"Project tasks"})[activeBranch]}
-$("addForm").addEventListener("submit",function(e){e.preventDefault();var title=$("newTitle").value.trim();if(!title)return;var t={id:Date.now().toString(36)+Math.random().toString(36).slice(2,7),title:title,description:"",branch:activeBranch,priority:$("priority").value,done:false,pinned:false,created:Date.now()};tasks.push(t);log("added",t);save();$("newTitle").value="";$("filter").value="all";render()});
-$("branch").addEventListener("change",function(){activeBranch=$("branch").value;render()});$("search").addEventListener("input",render);$("filter").addEventListener("change",render);
-$("export").onclick=function(){var data={format:"todo-list-backup",version:"1.2.0",exportedAt:new Date().toISOString(),tasks:tasks,history:history};var blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});var a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="ToDo_List_backup.json";a.click();setTimeout(function(){URL.revokeObjectURL(a.href)},1000)};
-$("import").onclick=function(){$("file").click()};$("file").onchange=function(){var f=$("file").files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.format!=="todo-list-backup"||!Array.isArray(d.tasks))throw new Error("Not a valid ToDo List backup.");if(!confirm("Replace current tasks with this backup?"))return;tasks=d.tasks;history=Array.isArray(d.history)?d.history:[];save();render()}catch(e){alert("Import failed: "+e.message)}$("file").value=""};r.readAsText(f)};
-$("clearDone").onclick=function(){if(!confirm("Remove all completed tasks from this branch?"))return;tasks=tasks.filter(function(t){return t.branch!==activeBranch||!t.done});save();render()};
-load();render();
-})();
+const $ = id => document.getElementById(id);
+function cloneData(v){return typeof structuredClone==="function"?structuredClone(v):JSON.parse(JSON.stringify(v))}
+function localDateString(d=new Date()){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+const today = localDateString();
+const initial = {
+  structure:{project:{name:"ToDo List",version:"1.3.0",created_date:today,description:"Mobile-friendly visual task manager"},
+  branch_control:{current_branch:"main",default_branch:"main",available_branches:["main","learning","projects"]},
+  branches:{
+    main:{branch_name:"main",works:[]},
+    learning:{branch_name:"learning",works:[]},
+    projects:{branch_name:"projects",works:[]}},
+  settings:{max_display_works:3,show_pinned_first:true,show_urgent_first:true,show_completion_time:true}}
+};
+let data, doneData, historyData, pinnedData, view="Today", recognition=null, toastTimer=null;
+function safeStorageGet(key){try{return localStorage.getItem(key)}catch(e){return null}}
+function load(key,fallback){try{const raw=safeStorageGet(key);if(raw===null)return cloneData(fallback);return JSON.parse(raw)??cloneData(fallback)}catch(e){return cloneData(fallback)}}
+function setTheme(theme){const allowed=["midnight","emerald","violet","rose","gold"];if(!allowed.includes(theme))theme="midnight";document.documentElement.dataset.theme=theme;try{localStorage.setItem("todo_list_theme",theme)}catch(e){}toast("Theme changed: "+theme)}
+function save(){try{
+  localStorage.setItem("todo_list_available",JSON.stringify(data));
+  localStorage.setItem("todo_list_done",JSON.stringify(doneData));
+  localStorage.setItem("todo_list_history",JSON.stringify(historyData));
+  localStorage.setItem("todo_list_pinned",JSON.stringify(pinnedData));
+  return true;
+}catch(e){toast("Storage is full or blocked. Export a backup.");return false}}
+function iso(){return new Date().toISOString()}
+function localDateFromTimestamp(v){if(!v)return "";const d=new Date(v);return Number.isNaN(d.getTime())?String(v).slice(0,10):localDateString(d)}
+function id(prefix="WORK"){return prefix+"-"+Math.random().toString(16).slice(2,8).toUpperCase()}
+function branch(){return data.structure.branch_control.current_branch}
+function works(){return data.structure.branches[branch()].works}
+function allActive(){return Object.entries(data.structure.branches).flatMap(([b,br])=>br.works.map(w=>({...w,_branch:b})))}
+function log(type,details={}){historyData.history.push({event_id:id("EVENT"),event_type:type,timestamp:iso(),branch:branch(),...details});if(historyData.history.length>1000)historyData.history=historyData.history.slice(-1000)}
+function syncPins(){pinnedData.pinned_works=allActive().filter(w=>w.pinned).map(w=>({work_id:w.work_id,title:w.title,pin_suffix:">-pin",pinned_at:w.pinned_at||w.created_at,branch:w._branch}))}
+function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").classList.remove("show"),2600)}
+function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function currentTimeGreeting(){let h=new Date().getHours();return h<12?"Good morning ☀":h<18?"Good afternoon ✨":"Good evening ✨"}
+function fmtDate(d){if(!d)return "No deadline";let date=new Date(d+"T00:00:00");return isNaN(date) ? d : date.toLocaleDateString(undefined,{day:"numeric",month:"short"})}
+function taskSort(a,b){return Number(!!b.pinned)-Number(!!a.pinned)||({high:0,medium:1,low:2}[a.priority]??1)-({high:0,medium:1,low:2}[b.priority]??1)||(a.target_date||"9999").localeCompare(b.target_date||"9999")||(a.target_time||"99:99").localeCompare(b.target_time||"99:99")}
+function render(){
+  $("greeting").textContent=currentTimeGreeting();$("todayDate").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",day:"numeric",month:"long",year:"numeric"});
+  $("version").textContent="● v"+(data.structure.project.version||"1.0.0");
+  const branches=data.structure.branch_control.available_branches;
+  $("branchSelect").innerHTML=branches.map(b=>`<option value="${esc(b)}" ${b===branch()?"selected":""}>${esc(b)}</option>`).join("");
+  const active=allActive(), completed=doneData.completed_works||[], pins=active.filter(w=>w.pinned), total=active.length+completed.length;
+  $("activeCount").textContent=active.length;$("doneCount").textContent=completed.length;$("pinnedCount").textContent=pins.length;
+  const pct=total?Math.round(completed.length/total*100):0;$("progressRing").style.setProperty("--progress",pct+"%");$("progressText").innerHTML=`${completed.length}/${total}<small>DONE</small>`;
+  let title=view,hint="",items=[];
+  if(view==="Today"){title="Today's focus";hint="Overdue and due today · "+branch();const todayKey=localDateString();items=works().filter(w=>!w.target_date||w.target_date<=todayKey).slice().sort((a,b)=>{const ao=a.target_date&&a.target_date<todayKey?0:1,bo=b.target_date&&b.target_date<todayKey?0:1;return ao-bo||taskSort(a,b)})}
+  else if(view==="All tasks"){title="All active tasks";hint="Current branch: "+branch();items=works().slice().sort(taskSort)}
+  else if(view==="Pinned"){title="Pinned for later";hint="Saved priorities";items=active.filter(w=>w.pinned).sort(taskSort)}
+  else if(view==="Completed"){title="Completed wins";hint="Look how far you've come";items=completed.slice().reverse();$("eyebrow").textContent="CELEBRATE YOUR PROGRESS"}
+  else if(view==="History"){title="Activity timeline";hint="Recent changes";$("eyebrow").textContent="YOUR JOURNEY, SAVED"}
+  else {title="Your toolkit";hint="Backup and app info";$("eyebrow").textContent="YOUR TASKS, YOUR RULES"}
+  if(view!=="Completed"&&view!=="History"&&view!=="More")$("eyebrow").textContent="YOUR PERSONAL FOCUS SPACE";
+  $("sectionTitle").textContent=title;$("sectionHint").textContent=hint;
+  const query=$("search").value.trim().toLowerCase();
+  if(query&&view!=="History"&&view!=="More")items=items.filter(w=>(w.title+" "+(w.description||"")+" "+(w.tags||[]).join(" ")).toLowerCase().includes(query));
+   if(view==="Today"&&!query){const limit=Math.max(1,Number(data.structure.settings?.max_display_works)||3);items=items.slice(0,limit)}
+  const list=$("taskList");list.innerHTML="";
+  if(view==="History"){renderHistory(list);return}
+  if(view==="More"){renderMore(list);return}
+  if(!items.length){list.innerHTML=`<div class="glass empty"><div class="spark">✦</div><h4>${view==="Completed"?"Your next win is waiting":"A little breathing room"}</h4><p>${view==="Completed"?"Complete a task and it will appear here.":"Nothing here right now. Add a task and make it happen."}</p></div>`;return}
+  items.forEach((w,i)=>list.appendChild(taskCard(w,i,view==="Completed")));
+}
+function taskCard(w,i,isDone=false){
+  const card=document.createElement("article");card.className="glass task";card.style.setProperty("--accent",w.pinned?"var(--violet)":isDone?"var(--green)":w.priority==="high"?"var(--red)":"var(--cyan)");card.style.animationDelay=(i*35)+"ms";
+  const branchName=w._branch||w.branch||branch(),deadline=w.target_date?fmtDate(w.target_date)+(w.target_time?" · "+w.target_time:""):"No deadline";
+  const tags=(w.tags||[]).map(t=>`<span class="pill">${esc(t)}</span>`).join("");
+  card.innerHTML=`<div class="tasktop"><button class="check" aria-label="${isDone?"Completed":"Mark done"}" ${isDone?"disabled":""}>${isDone?"✓":"○"}</button><div class="tasktitle">${esc(w.title)}</div><span class="pill ${esc(w.priority||"medium")}">${esc((w.priority||"medium").toUpperCase())}</span></div>
+  ${w.description?`<p class="taskdesc">${esc(w.description)}</p>`:""}
+  <div class="tags">${w.pinned&&!isDone?'<span class="pill pin">★ PINNED</span>':""}${tags}</div>
+  <div class="meta"><span>◷ ${esc(deadline)}</span><span>⌛ ${Number(w.estimated_minutes)||0} min</span><span>⌘ ${esc(branchName)}</span></div>
+  ${isDone?`<div class="meta" style="margin-top:9px"><span>✓ Completed ${esc(localDateFromTimestamp(w.completed_at))}</span></div><div class="actions"><button class="mini restorebtn">↶ Mark incomplete</button></div>`:`<div class="actions"><button class="mini pinbtn">${w.pinned?"★ Unpin":"☆ Pin"}</button><button class="mini editbtn">✎ Edit</button><button class="mini delbtn">⌫ Delete</button></div>`}`;
+  if(!isDone)card.querySelector(".check").addEventListener("click",()=>markDone(w.work_id));
+  if(isDone)card.querySelector(".restorebtn").addEventListener("click",()=>markIncomplete(w.work_id));
+  if(!isDone){card.querySelector(".pinbtn").addEventListener("click",()=>togglePin(w.work_id));card.querySelector(".editbtn").addEventListener("click",()=>openModal(w));card.querySelector(".delbtn").addEventListener("click",()=>deleteTask(w.work_id))}
+  return card;
+}
+function renderHistory(list){let arr=(historyData.history||[]).slice(-30).reverse();if(!arr.length){list.innerHTML='<div class="glass empty"><div class="spark">↺</div><h4>No activity yet</h4><p>Add a task or switch branches to start your timeline.</p></div>';return}
+  arr.forEach(e=>{const row=document.createElement("div");row.className="glass historyrow";row.innerHTML=`<strong>◈ ${esc((e.event_type||"event").split("_").join(" "))}</strong><small>${esc(e.work_title||e.to_branch||e.work_id||"")} · ${esc((e.timestamp||"").replace("T"," ").slice(0,16))} · ${esc(e.branch||e.to_branch||"")}</small>`;list.appendChild(row)})}
+function renderMore(list){list.innerHTML=`<div class="glass task"><div class="tasktitle">Your data belongs to you</div><p class="taskdesc" style="margin-left:0">Export/import the shared all_todo_v1.3.0.json bundle used by this page and the Python tracker.</p><div class="actions" style="margin-left:0"><button class="primary" id="exportBtn">⬇ Export shared JSON</button><button class="mini" id="importBtn">⬆ Import shared JSON</button></div><input type="file" id="importFile" accept=".json,application/json" hidden></div><div class="glass task"><div class="tasktitle">Activity history</div><p class="taskdesc" style="margin-left:0">Review recent task and branch changes.</p><div class="actions" style="margin-left:0"><button class="mini" id="historyBtn">↺ Open history</button></div></div><div class="glass task"><div class="tasktitle">Choose a theme 🎨</div><p class="taskdesc" style="margin-left:0">Pick your favorite accent palette. The choice is saved on this device.</p><div class="actions themechoices" style="margin-left:0;flex-wrap:wrap"><button class="mini" data-theme-choice="midnight">🔹 Midnight Blue</button><button class="mini" data-theme-choice="emerald">🟢 Emerald</button><button class="mini" data-theme-choice="violet">🟣 Royal Violet</button><button class="mini" data-theme-choice="rose">🌹 Rose</button><button class="mini" data-theme-choice="gold">✦ Classic Gold</button></div></div><div class="glass task"><div class="tasktitle">Voice input 🎙</div><p class="taskdesc" style="margin-left:0">Tap the microphone on the dashboard to speak a task. Browser speech recognition availability varies; typing always works.</p></div><div class="glass task"><div class="tasktitle">ToDo List · v1.3.0</div><p class="taskdesc" style="margin-left:0">Mobile-first dark glass interface. Data is stored in this browser on this device. Clearing browser site data may erase it, so export a backup.</p></div>`;
+  document.querySelectorAll("[data-theme-choice]").forEach(b=>b.onclick=()=>setTheme(b.dataset.themeChoice));
+  $("exportBtn").onclick=exportBackup;$("importBtn").onclick=()=>$("importFile").click();$("importFile").onchange=importBackup;const hb=$("historyBtn");if(hb)hb.onclick=()=>setView("History")}
+function setView(v){view=v;document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===v));render()}
+function openModal(w=null){$("taskForm").reset();$("workId").value=w?.work_id||"";$("modalTitle").textContent=w?"Edit task":"Add a task";$("titleInput").value=w?.title||"";$("descInput").value=w?.description||"";$("dateInput").value=w?.target_date||"";$("timeInput").value=w?.target_time||"";$("durationInput").value=w?.estimated_minutes||30;$("priorityInput").value=w?.priority||"medium";$("tagsInput").value=(w?.tags||[]).join(",");$("modalBack").classList.add("open");setTimeout(()=>$("titleInput").focus(),100)}
+function closeModal(){$("modalBack").classList.remove("open")}
+$("taskForm").addEventListener("submit",e=>{e.preventDefault();const title=$("titleInput").value.trim();if(!title)return;const existing=$("workId").value;const tags=$("tagsInput").value.split(",").map(x=>x.trim()).filter(Boolean);let w=existing?findWork(existing):null;
+  if(w){const old=w.title;Object.assign(w,{title,description:$("descInput").value.trim(),target_date:$("dateInput").value,target_time:$("timeInput").value,estimated_minutes:Number($("durationInput").value)||30,priority:$("priorityInput").value,tags});log("work_updated",{work_id:w.work_id,old_title:old,work_title:title})}
+  else{w={work_id:id(),title,description:$("descInput").value.trim(),created_at:iso(),target_date:$("dateInput").value,target_time:$("timeInput").value,estimated_minutes:Number($("durationInput").value)||30,priority:$("priorityInput").value,status:"pending",pinned:false,tags};works().push(w);log("work_added",{work_id:w.work_id,work_title:w.title})}
+  syncPins();const saved=save();closeModal();render();toast(saved?(existing?"Task updated ✦":"Task added. Tiny steps, big wins ✦"):"Save failed. Export a backup immediately.")});
+function findWork(workId){for(const br of Object.values(data.structure.branches)){const w=br.works.find(x=>x.work_id===workId);if(w)return w}return null}
+function markDone(workId){const w=findWork(workId);if(!w)return;const branchName=Object.keys(data.structure.branches).find(b=>data.structure.branches[b].works.some(x=>x.work_id===workId))||branch();const completed={...w,branch:branchName,completed_at:iso(),status:"done"};doneData.completed_works.push(completed);data.structure.branches[branchName].works=data.structure.branches[branchName].works.filter(x=>x.work_id!==workId);log("work_completed",{branch:branchName,work_id:workId,work_title:w.title});syncPins();const saved=save();render();toast(saved?"Task completed!":"Save failed. Export a backup.")}
+function markIncomplete(workId){
+  const idx=(doneData.completed_works||[]).findIndex(w=>w.work_id===workId);if(idx<0)return;
+  const w=doneData.completed_works.splice(idx,1)[0];const target=data.structure.branches[w.branch] ? w.branch : branch();
+  const restored={...w,status:"pending",pinned:false};delete restored.pinned_at;delete restored.completed_at;delete restored.branch;
+  data.structure.branches[target].works.push(restored);log("work_reopened",{branch:target,work_id:w.work_id,work_title:w.title});syncPins();const saved=save();render();toast(saved?"Task marked incomplete again":"Save failed. Export a backup.")
+}
+function addBranch(){
+  const raw=prompt("Enter a name for the new branch:");if(raw===null)return;
+  const name=raw.trim().toLowerCase().replace(/[^a-z0-9 _-]/g,"").replace(/\s+/g,"-").slice(0,32);
+  if(!name){toast("Please enter a valid branch name");return}
+  if(data.structure.branches[name]){toast("That branch already exists");return}
+  data.structure.branches[name]={branch_name:name,works:[]};data.structure.branch_control.available_branches=Object.keys(data.structure.branches);const old=branch();data.structure.branch_control.current_branch=name;log("branch_created",{from_branch:old,to_branch:name});save();render();toast("Branch created: "+name)
+}
+$("addBranchBtn").addEventListener("click",addBranch);
+function togglePin(workId){const w=findWork(workId);if(!w)return;w.pinned=!w.pinned;if(w.pinned)w.pinned_at=iso();else delete w.pinned_at;log(w.pinned?"work_pinned":"work_unpinned",{work_id:workId,work_title:w.title});syncPins();const saved=save();render();toast(saved?(w.pinned?"Pinned to your focus ✦":"Pin removed"):"Save failed. Export a backup.")}
+function deleteTask(workId){const w=findWork(workId);if(!w)return;if(!confirm(`Delete “${w.title}” from active tasks?`))return;const branchName=Object.keys(data.structure.branches).find(b=>data.structure.branches[b].works.some(x=>x.work_id===workId));data.structure.branches[branchName].works=data.structure.branches[branchName].works.filter(x=>x.work_id!==workId);log("work_deleted",{branch:branchName,work_id:workId,work_title:w.title});syncPins();const saved=save();render();toast(saved?"Task removed":"Save failed. Export a backup.")}
+$("branchSelect").addEventListener("change",e=>{const old=branch(),next=e.target.value;if(!data.structure.branches[next])return;data.structure.branch_control.current_branch=next;log("branch_switched",{from_branch:old,to_branch:next});save();render();toast("Switched to "+next)});
+$("search").addEventListener("input",render);$("addBtn").addEventListener("click",()=>openModal());$("closeModal").addEventListener("click",closeModal);$("cancelBtn").addEventListener("click",closeModal);$("modalBack").addEventListener("click",e=>{if(e.target===$("modalBack"))closeModal()});document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.view==="More")setView("More");else setView(b.dataset.view==="All tasks"?"All tasks":b.dataset.view)}));
+function exportBackup(){syncPins();const bundle={format:"all_todo_v1.3.0",schema_version:1,exported_at:iso(),todo:{Available_doing_list:data,Available_doing_work:pinnedData,Done_work_list:doneData,History_add_delete:historyData},plt:{schema_version:2,username:"anmol",phases:[],projects:[],programs:[],settings:{show_tips:true}},settings:{todo_commands_enabled:false},command_history:[],changes:[]};const blob=new Blob([JSON.stringify(bundle,null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="all_todo_v1.3.0.json";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);toast("Shared JSON exported")}
+function importBackup(e){const file=e.target.files?.[0];if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const b=JSON.parse(reader.result);const pack=b.format==="all_todo_v1.3.0"?b.todo:b;if(!pack?.Available_doing_list?.structure?.branches)throw new Error("Invalid shared ToDo JSON.");if(!Array.isArray(pack.Available_doing_work?.pinned_works)||!Array.isArray(pack.Done_work_list?.completed_works)||!Array.isArray(pack.History_add_delete?.history))throw new Error("Invalid pinned/completed/history data.");if(!window.confirm("Importing replaces current ToDo data. Continue?"))return;data=pack.Available_doing_list;doneData=pack.Done_work_list;historyData=pack.History_add_delete;pinnedData=pack.Available_doing_work;if(!save())throw new Error("Storage is blocked or full.");render();toast("Shared JSON imported")}catch(err){alert("Could not import backup: "+err.message)}e.target.value=""};reader.readAsText(file)}
+function startVoice(){const Speech=window.SpeechRecognition||window.webkitSpeechRecognition;if(!Speech){toast("Voice input isn't supported in this browser. Try Chrome, or type your task.");return}
+  if(recognition){try{recognition.stop()}catch(e){}recognition=null;$("voiceBtn").classList.remove("listening")}
+  recognition=new Speech();recognition.lang=navigator.language||"en-US";recognition.interimResults=false;recognition.maxAlternatives=1;
+  $("voiceBtn").classList.add("listening");$("voiceBtn").textContent="◉";
+  recognition.onresult=e=>{const spoken=e.results[0][0].transcript.trim();$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";openModal();let clean=spoken.replace(/^(please\s+)?(add|create|make)\s+(a\s+)?(task|to-do)\s*/i,"").replace(/^to\s+/i,"");$("titleInput").value=clean||spoken;toast("Heard: "+spoken)};
+  recognition.onerror=e=>{ $("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";toast(e.error==="not-allowed"?"Allow microphone access to use voice input.":"Couldn't hear that. Please try again or type.");};
+  recognition.onend=()=>{$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙"};
+  try{recognition.start();toast("Listening… say your task")}catch(e){$("voiceBtn").classList.remove("listening");$("voiceBtn").textContent="🎙";toast("Microphone could not start.")}
+}
+$("voiceBtn").addEventListener("click",startVoice);
+function init(){
+  const savedTheme=safeStorageGet("todo_list_theme")||"midnight";document.documentElement.dataset.theme=["midnight","emerald","violet","rose","gold"].includes(savedTheme)?savedTheme:"midnight";
+  // v1.3.0 preserves existing user data; never wipe storage automatically.\n  data=load("todo_list_available",initial);doneData=load("todo_list_done",{completed_works:[]});historyData=load("todo_list_history",{history:[]});pinnedData=load("todo_list_pinned",{pinned_works:[]});
+  // Basic recovery for malformed but parseable local data.
+  if(!data.structure?.branches||!data.structure?.branch_control){data=cloneData(initial)}
+  if(!data.structure.branches[data.structure.branch_control.current_branch])data.structure.branch_control.current_branch=data.structure.branch_control.default_branch||"main";
+  render();save()}
+init();
 </script>
 </body>
 </html>
