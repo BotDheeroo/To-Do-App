@@ -1,0 +1,38 @@
+{
+  "structure": {
+    "project": {
+      "name": "ToDo List",
+      "version": "1.2.0",
+      "description": "Mobile-first premium dark glassmorphism to-do list"
+    },
+    "branch_control": {
+      "current_branch": "main",
+      "default_branch": "main",
+      "available_branches": [
+        "main",
+        "learning",
+        "projects"
+      ]
+    },
+    "branches": {
+      "main": {
+        "branch_name": "main",
+        "works": []
+      },
+      "learning": {
+        "branch_name": "learning",
+        "works": []
+      },
+      "projects": {
+        "branch_name": "projects",
+        "works": []
+      }
+    },
+    "settings": {
+      "max_display_works": 3,
+      "show_pinned_first": true,
+      "show_urgent_first": true,
+      "show_completion_time": true
+    }
+  }
+}
